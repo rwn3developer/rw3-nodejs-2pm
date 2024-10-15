@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <div align="center">
+        <h2>Edit Record</h2>
+        <form method="post" action="/updateRecord" enctype="multipart/form-data">
+            <input type="hidden" value="<%= single.id %>" name="editid">
+            Name : <input type="text" value="<%= single.name %>" name="name"><br><br>
+            Email : <input type="text" value="<%= single.email %>" name="email"><br><br>
+            Password : <input type="text" value="<%= single.password %>" name="password"><br><br>
+            Gender :- <input type="radio" <% if(single.gender === "male") { %> checked <% } %> name="gender" value="male">Male
+            <input type="radio" <% if(single.gender === "female") { %> checked <% } %> name="gender" value="female">Female
+            <br><br>
+            Hobby :- <input type="checkbox" <% if(single.hobby.includes("cricket"))  { %> checked <% } %> name="hobby" value="cricket">Cricket
+            <input type="checkbox" <% if(single.hobby.includes("music"))  { %> checked <% } %> name="hobby" value="music">Music
+            <input type="checkbox" <% if(single.hobby.includes("travelling"))  { %> checked <% } %> name="hobby" value="travelling">Travelling
+            <br><br>
+            City :- <select name="city">
+                <option value="">---select city---</option>
+                <% 
+                        let city = ["surat","baroda","ahemdabad","rajkot"]
+                        city.map((c)=>{ %>
+                            <option <% if(single.city === c) { %> selected <% } %> value="<%= c %>"><%= c %></option>
+               <% }) %>
+            </select>
+            <br><br>
+            <input type="file" name="image">
+            <img src="<%= single.image %>" width="100"/>
+            <br><br>
+            <input type="submit"><br><br>
+            <a href="/">View</a>
+        </form>
+    </div>
+</body>
+</html>

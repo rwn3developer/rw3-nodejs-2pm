@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <div align="center">
+        <h2>Edit User</h2>
+        <form action="/updateRecord" method="post">
+            <input type="hidden" name="editid" value="<%= single?.id %>">
+            Name : <input type="text" name="name" value="<%= single?.name %>">
+            Phone : <input type="text" name="phone" value="<%= single?.phone %>">
+            <input type="submit" value="submit"> 
+        </form>
+        <a href="/">View</a>
+    </div>
+</body>
+</html>
